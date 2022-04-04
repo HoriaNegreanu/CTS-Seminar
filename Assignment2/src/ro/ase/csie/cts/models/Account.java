@@ -1,20 +1,42 @@
 package ro.ase.csie.cts.models;
 
+import ro.ase.csie.cts.exceptions.NegativeAccountValueException;
+import ro.ase.csie.cts.exceptions.NegativeDaysActiveException;
+import ro.ase.csie.cts.exceptions.NegativeRateException;
+
 public class Account {
 	public double loanValue;
 	public double rate;
 	public int daysActive;
 	public AccountType accountType;
-	
+
 	public final static double BROKER_FEE = .0125;
 	public final static int NO_DAYS = 365;
 
+	// getters
 	public double getLoan() {
 		return loanValue;
 	}
 
 	public double getRate() {
-		return this.rate;
+		return rate;
+	}
+
+	public double getDaysActive() {
+		return daysActive;
+	}
+	
+	//setters
+	public void setLoanValue(double loanValue){
+		this.loanValue = loanValue;
+	}
+	
+	public void setRate(double rate){
+		this.rate = rate;
+	}
+	
+	public void setDaysActive(int daysActive){
+		this.daysActive = daysActive;
 	}
 
 	// must have method - the lead has requested it in all classes
@@ -48,7 +70,7 @@ public class Account {
 		return totalFee;
 	}
 
-	public Account(double value, double rate, AccountType accountType) throws Exception {
+	public Account(double value, double rate, AccountType accountType, int daysActive) throws Exception {
 		if (value < 0)
 			throw new Exception();
 		else {
@@ -56,6 +78,7 @@ public class Account {
 		}
 		this.rate = rate;
 		this.accountType = accountType;
+		this.daysActive = daysActive;
 	}
 
 }
