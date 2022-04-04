@@ -1,13 +1,14 @@
 package ro.ase.csie.cts.models;
 
 public class Account {
-	public double loan_value, rate;
+	public double loanValue;
+	public double rate;
 	public int daysActive;
 	public AccountType accountType;
 
-	public double loan() {
-		System.out.println("The loan value is " + this.loan_value);
-		return loan_value;
+	public double getLoan() {
+		System.out.println("The loan value is " + this.loanValue);
+		return loanValue;
 	}
 
 	public double getRate() {
@@ -17,19 +18,19 @@ public class Account {
 
 	// must have method - the lead has requested it in all classes
 	public double getMonthlyRate() {
-		return loan_value * rate;
+		return loanValue * rate;
 	}
 
 	public void setValue(double value) throws Exception {
 		if (value < 0)
 			throw new Exception();
 		else {
-			loan_value = value;
+			loanValue = value;
 		}
 	}
 
 	public String to_string() {
-		return "Loan: " + this.loan_value + "; rate: " + this.rate + "; days active:" + daysActive + "; Type: "
+		return "Loan: " + this.loanValue + "; rate: " + this.rate + "; days active:" + daysActive + "; Type: "
 				+ accountType + ";";
 	}
 
@@ -38,7 +39,7 @@ public class Account {
 		System.out.println("This is an account");
 	}
 
-	public static double calculate(Account[] accounts) {
+	public static double calculateBrokerFee(Account[] accounts) {
 		double totalFee = 0.0;
 		Account account;
 		int temp = 365;
@@ -46,7 +47,7 @@ public class Account {
 			account = accounts[i];
 			if (account.accountType == AccountType.PREMIUM || account.accountType == AccountType.SUPER_PREMIUM)
 				totalFee += .0125 * ( // 1.25% broker's fee
-				account.loan_value * Math.pow(account.rate, (account.daysActive / 365)) - account.loan_value); // interest-principal
+				account.loanValue * Math.pow(account.rate, (account.daysActive / 365)) - account.loanValue); // interest-principal
 		}
 		return totalFee;
 	}
@@ -55,7 +56,7 @@ public class Account {
 		if (value < 0)
 			throw new Exception();
 		else {
-			loan_value = value;
+			loanValue = value;
 		}
 		this.rate = rate;
 		this.accountType = accountType;

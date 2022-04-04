@@ -18,10 +18,13 @@ Changes:
 6. Meaningful Names: 
 	Changed all variables to use camel case to be more consistent
 	Changed the names of some variables to be more meaningful
+	Changed the names of some functions to be more meaningful
 7. Single Responsability: 
 	Outsource the way the broker fee is computed
 8. Classes and Interfaces:
 	Created the RateInterface class which adds the getMonthlyRate() function so the user will have to override it
+	Added more setters and getters.
+	Added daysActive in the constructor
 9. Functions: 
 	In constructor used the set functions to set the values for the variables so the code won't repeat
 	Functions split into multiple simple stupid methods, like the calculateBrokerFee formula
