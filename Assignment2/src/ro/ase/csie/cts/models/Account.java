@@ -10,9 +10,6 @@ public class Account {
 	public int daysActive;
 	public AccountType accountType;
 
-	public final static double BROKER_FEE = .0125;
-	public final static int NO_DAYS = 365;
-
 	// getters
 	public double getLoan() {
 		return loanValue;
@@ -25,21 +22,21 @@ public class Account {
 	public double getDaysActive() {
 		return daysActive;
 	}
-	
-	//setters
+
+	// setters
 	public void setLoanValue(double loanValue) throws NegativeAccountValueException {
 		if (loanValue < 0)
 			throw new NegativeAccountValueException();
 		this.loanValue = loanValue;
 	}
-	
-	public void setRate(double rate) throws NegativeRateException{
+
+	public void setRate(double rate) throws NegativeRateException {
 		if (rate < 0)
 			throw new NegativeRateException();
 		this.rate = rate;
 	}
-	
-	public void setDaysActive(int daysActive) throws NegativeDaysActiveException{
+
+	public void setDaysActive(int daysActive) throws NegativeDaysActiveException {
 		if (daysActive < 0)
 			throw new NegativeDaysActiveException();
 		this.daysActive = daysActive;
@@ -64,15 +61,9 @@ public class Account {
 				+ accountType;
 	}
 
+	// compute the broker fee
 	public static double calculateBrokerFee(Account[] accounts) {
-		double totalFee = 0.0;
-		Account account;
-		for (int i = 0; i < accounts.length; i++) {
-			account = accounts[i];
-			if (account.accountType == AccountType.PREMIUM || account.accountType == AccountType.SUPER_PREMIUM)
-				totalFee += BROKER_FEE * ( // 1.25% broker's fee
-				account.loanValue * Math.pow(account.rate, (account.daysActive / NO_DAYS)) - account.loanValue); // interest-principal
-		}
+		double totalFee = CalculateBrokerFee.calculateTotalFee(accounts);
 		return totalFee;
 	}
 
