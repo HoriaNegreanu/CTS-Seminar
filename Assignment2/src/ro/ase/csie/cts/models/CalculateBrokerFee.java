@@ -5,6 +5,7 @@ public class CalculateBrokerFee {
 	public final static double BROKER_FEE = .0125;
 	public final static int NO_DAYS = 365;
 
+	//calculates fee for all accounts
 	public static double calculateTotalFee(Account[] accounts) {
 		double totalFee = 0.0;
 		Account account;
