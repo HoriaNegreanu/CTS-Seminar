@@ -12,9 +12,9 @@ Changes:
 	Applied formatting to code
 4. Input Validation: 
 	Validate inputs: for setter methods check if input data is correct
-5. Exceptions: 
-	Added more explainitory exceptions when adding invalid values for value or rate
 	Throw exceptions if input data is invalid
+5. Exceptions: 
+	Added more explanatory exceptions classes to be used when adding invalid values for value or rate
 6. Meaningful Names: 
 	Changed all variables to use camel case to be more consistent
 	Changed the names of some variables to be more meaningful
