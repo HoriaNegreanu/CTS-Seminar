@@ -27,15 +27,21 @@ public class Account {
 	}
 	
 	//setters
-	public void setLoanValue(double loanValue){
+	public void setLoanValue(double loanValue) throws NegativeAccountValueException {
+		if (loanValue < 0)
+			throw new NegativeAccountValueException();
 		this.loanValue = loanValue;
 	}
 	
-	public void setRate(double rate){
+	public void setRate(double rate) throws NegativeRateException{
+		if (rate < 0)
+			throw new NegativeRateException();
 		this.rate = rate;
 	}
 	
-	public void setDaysActive(int daysActive){
+	public void setDaysActive(int daysActive) throws NegativeDaysActiveException{
+		if (daysActive < 0)
+			throw new NegativeDaysActiveException();
 		this.daysActive = daysActive;
 	}
 
