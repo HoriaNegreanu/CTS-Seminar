@@ -1,5 +1,6 @@
 /.metadata/
+/Assignment2/
 .gradle
 temp
-.exe
+*.exe
 *.tmp
