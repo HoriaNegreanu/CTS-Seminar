@@ -67,15 +67,12 @@ public class Account {
 		return totalFee;
 	}
 
-	public Account(double value, double rate, AccountType accountType, int daysActive) throws Exception {
-		if (value < 0)
-			throw new Exception();
-		else {
-			loanValue = value;
-		}
-		this.rate = rate;
+	// constructor with params
+	public Account(double loanValue, double rate, AccountType accountType, int daysActive)
+			throws NegativeAccountValueException, NegativeRateException, NegativeDaysActiveException {
+		setLoanValue(loanValue);
+		setRate(rate);
 		this.accountType = accountType;
-		this.daysActive = daysActive;
+		setDaysActive(daysActive);
 	}
-
 }
