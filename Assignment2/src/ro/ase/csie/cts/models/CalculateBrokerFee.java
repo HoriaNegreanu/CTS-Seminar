@@ -18,7 +18,7 @@ public class CalculateBrokerFee {
 	
 	public static double calculateAccountFee(Account account) {
 		double result;
-		result = account.loanValue * Math.pow(account.rate, (account.daysActive / NO_DAYS)) - account.loanValue;
+		result = account.loanValue * (Math.pow(account.rate, (account.daysActive / NO_DAYS)) - 1);
 		return result;
 	}
 }
