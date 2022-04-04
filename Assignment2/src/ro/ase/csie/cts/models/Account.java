@@ -5,14 +5,15 @@ public class Account {
 	public double rate;
 	public int daysActive;
 	public AccountType accountType;
+	
+	public final static double BROKER_FEE = .0125;
+	public final static int NO_DAYS = 365;
 
 	public double getLoan() {
-		System.out.println("The loan value is " + this.loanValue);
 		return loanValue;
 	}
 
 	public double getRate() {
-		System.out.println("The rate is " + rate);
 		return this.rate;
 	}
 
@@ -29,25 +30,20 @@ public class Account {
 		}
 	}
 
-	public String to_string() {
+	@Override
+	public String toString() {
 		return "Loan: " + this.loanValue + "; rate: " + this.rate + "; days active:" + daysActive + "; Type: "
-				+ accountType + ";";
-	}
-
-	public void print() {
-		int vb = 10;
-		System.out.println("This is an account");
+				+ accountType;
 	}
 
 	public static double calculateBrokerFee(Account[] accounts) {
 		double totalFee = 0.0;
 		Account account;
-		int temp = 365;
 		for (int i = 0; i < accounts.length; i++) {
 			account = accounts[i];
 			if (account.accountType == AccountType.PREMIUM || account.accountType == AccountType.SUPER_PREMIUM)
-				totalFee += .0125 * ( // 1.25% broker's fee
-				account.loanValue * Math.pow(account.rate, (account.daysActive / 365)) - account.loanValue); // interest-principal
+				totalFee += BROKER_FEE * ( // 1.25% broker's fee
+				account.loanValue * Math.pow(account.rate, (account.daysActive / NO_DAYS)) - account.loanValue); // interest-principal
 		}
 		return totalFee;
 	}
