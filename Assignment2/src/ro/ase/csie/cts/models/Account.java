@@ -48,6 +48,7 @@ public class Account implements RateInterface{
 		return loanValue * rate;
 	}
 
+	//should use string builder
 	@Override
 	public String toString() {
 		return "Loan: " + this.loanValue + "; rate: " + this.rate + "; days active:" + daysActive + "; Type: "
@@ -55,6 +56,7 @@ public class Account implements RateInterface{
 	}
 
 	//compute the broker fee
+	//Accounts class should not be responsible to calculate the fee for ALL accounts, but only for itself
 	public static double calculateBrokerFee(Account[] accounts) {
 		double totalFee = CalculateBrokerFee.calculateTotalFee(accounts);
 		return totalFee;
