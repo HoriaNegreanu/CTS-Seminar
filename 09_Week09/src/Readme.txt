@@ -26,7 +26,8 @@ Composite
 - some characters can control groups
 
 FlyWeight - when memory is a problem. Prototype is when time is a problem
-5. To efficiently manage (from a memory point of view) scenarios in which players interact with multiple computer-controlled characters find a solution based on:
+5. To efficiently manage (from a memory point of view) scenarios in which players interact with multiple 
+computer-controlled characters find a solution based on:
 - the collection of computer-coordinated characters contains elements of the same kind (the same 3D models)
 - the space occupied by a 3D model is significant
 - generating such a scenario requires a significant memory space for the client
