@@ -65,7 +65,7 @@ public class LoggerSingleton implements ILogging{
 		}
 	}
 	
-	public static LoggerSingleton getLogger(LoggerType type) {
+	public synchronized static LoggerSingleton getLogger(LoggerType type) {
 		LoggerSingleton logger = loggers.get(type);
 		
 		if(logger  == null) {
